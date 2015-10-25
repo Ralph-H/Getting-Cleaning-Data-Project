@@ -8,7 +8,7 @@ Original data: As directed for the assignment, the original project for this dat
 
 A full description of the data can be found at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-The original data came from a study of wearable computing.  It consisted of accelerometer and gyroscope measurements from the Samsung Galaxy S smartphone, for 30 participants, performing six different activities.  For a detailed description of the variables in the original dataset, please refer to the codebook which comes with it when downloaded.
+The original data came from a study of wearable computing.  It consisted of accelerometer and gyroscope measurements from the Samsung Galaxy S smartphone, for 30 participants, performing six different activities.  For a detailed description of the variables in the original dataset, please refer to the codebook which comes with it when downloaded. Since the measurement data in the original dataset were normalized, all measurement data are unitless.
 
 This study: For this study, the data was downloaded directly from the internet, and then extracted from the zip file.
 
@@ -48,7 +48,7 @@ Variable names and units:
 1.	subjectID - unique numerical identifier for each of the 30 participants in the study.  The values range from 1 - 30.
 2.	activity - the name of each of the six activities (WALKING, WALKING_UPSTAIRS, SITTING, STANDING, and LAYING).
 
-The names of the remaining 86 variables are the same as in the original data set (see subsection Variable names above).  Recall that each of these is now the mean value of the collection of measurement given by the variable name, for each participant performing each activity.  Since calculating a mean does not change the units, all (mean) values have the same units as the original measurements.  
+The names of the remaining 86 variables are the same as in the original data set (see subsection Variable names above).  Recall that each of these is now the mean value of the collection of measurement given by the variable name, for each participant performing each activity.  Since calculating a mean does not change the units, all (mean) values remain unitless.  
 
 For the original, technical meaning of each of these variables, please refer to the Appendix, which is the "features_info" file from the original data.
 
