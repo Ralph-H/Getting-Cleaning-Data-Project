@@ -5,7 +5,7 @@ date: "October 25, 2015"
 output: word_document
 ---
 
-The project program consists of a single R script, called "run_analysis.R".  The program sets the working directory locally to the (slightly renamed) 'UCIHARDataset' folder, which contains the original data folder and files. The path to the files in the 'test' and 'train' folders are set in the individual 'read.table() commands.
+The project program consists of a single R script, called "run_analysis.R".  The program sets the working directory locally to the (slightly renamed) 'UCIHARDataset' folder, which contains the original data folder and files. The path to the files in the 'test' and 'train' folders are set in the individual read.table() commands.
 
 The program then tidies and merges the data, downselects to the appropriate variables containing mean and standard deviation measurements, and performs the analysis as described in detail in the codebook.
 
