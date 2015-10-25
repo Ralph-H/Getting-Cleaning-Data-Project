@@ -1,0 +1,204 @@
+Codebook
+
+Project: Coursera Getting & Cleaning Data Class Project
+
+Study Design
+
+Original data: As directed for the assignment, the original project for this data consisted of the datasets downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+A full description of the data can be found at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+The original data came from a study of wearable computing.  It consisted of accelerometer and gyroscope measurements from the Samsung Galaxy S smartphone, for 30 participants, performing six different activities.  For a detailed description of the variables in the original dataset, please refer to the codebook which comes with it when downloaded.
+
+This study: For this study, the data was downloaded directly from the internet, and then extracted from the zip file.
+
+To tidy and analyze the data, a computer program was written in the R programming language.  The program consists of a single script, which is named "run_analysis.R".
+
+Inputs: The program uses the following original data files as inputs:
+1.	X_test.txt - measurements for the members of the test group.
+2.	y_test.txt - identify, by row, which activity was performed for each measurement of the test group, using a numerical code.
+3.	X_train.txt - measurements for the members of the training group.
+4.	y_train.txt - identify, by row, which activity was performed for each measurement of the training group, using a numerical code.
+5.	features.txt - names of all measured variables.
+6.	activity_labels.txt - one label for each of the six activities, in two columns: the first column contains the numerical code, and the second column contains the corresponding word or phrase.
+7.	subject_train.txt - identifies, by row, which measurements belong to which members of the training group.
+8.	subject_test.txt - identifies, by row, which measurements belong to which members of the test group.
+
+Output: The output of the study is a file named "tidy_averages.txt".  The file consist of the mean values of all measurement variables from the original data set which contained the strings "mean" or "std" (standard deviation), regardless of case or position within the original variable name.  (Recall the original variable names are found in "features.txt".)  These mean values were taken over all measurements of each participant performing each activity.
+
+Example: for the subject corresponding to "subjectID" = 1, all "tBodyAcc-mean()-X" measurements while "activity" = "WALKING" were averaged to produce the mean.  If the table is read into R using 
+
+df <- read.table("tidy_averages.txt", header = TRUE)
+
+this value will be found in df[1, 3].
+
+Test and training groups:  Originally the data was organized into two groups, the test group and the training group.  The subsetting method used by the program rearranged the rows into numerical order, by "subjectID".  From the original data, the participants of each group were as follows, by "subjectID":
+
+Test group: 2, 4, 9, 10, 12, 13, 18, 20, 24.
+Training group: 1, 3, 5, 6, 7, 8, 11, 14, 15, 16, 17, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30.
+
+Variable names: all variable names of all measurements remain the same as in the original data set, due to their technical significance.  The word "mean" was not added, as it should be understood that this file consists entirely of the means described above (along with subject and activity identifiers).
+
+
+
+ 
+Codebook
+
+Variable names and units:
+1.	subjectID - unique numerical identifier for each of the 30 participants in the study.  The values range from 1 - 30.
+2.	activity - the name of each of the six activities (WALKING, WALKING_UPSTAIRS, SITTING, STANDING, and LAYING).
+
+The names of the remaining 86 variables are the same as in the original data set (see subsection Variable names above).  Recall that each of these is now the mean value of the collection of measurement given by the variable name, for each participant performing each activity.  Since calculating a mean does not change the units, all (mean) values have the same units as the original measurements.  
+
+For the original, technical meaning of each of these variables, please refer to the Appendix, which is the "features_info" file from the original data.
+
+3.	tBodyAcc-mean()-X 
+4.	tBodyAcc-mean()-Y                 
+5.	tBodyAcc-mean()-Z  
+6.	tBodyAcc-std()-X                    
+7.	tBodyAcc-std()-Y               
+8.	tBodyAcc-std()-Z                    
+9.	tGravityAcc-mean()-X               
+10.	tGravityAcc-mean()-Y                
+11.	tGravityAcc-mean()-Z            
+12.	tGravityAcc-std()-X                 
+13.	tGravityAcc-std()-Y          
+14.	tGravityAcc-std()-Z                 
+15.	tBodyAccJerk-mean()-X        
+16.	tBodyAccJerk-mean()-Y               
+17.	tBodyAccJerk-mean()-Z    
+18.	tBodyAccJerk-std()-X                
+19.	tBodyAccJerk-std()-Y           
+20.	tBodyAccJerk-std()-Z                
+21.	tBodyGyro-mean()-X   
+22.	tBodyGyro-mean()-Y                  
+23.	tBodyGyro-mean()-Z         
+24.	tBodyGyro-std()-X                   
+25.	tBodyGyro-std()-Y               
+26.	tBodyGyro-std()-Z                   
+27.	tBodyGyroJerk-mean()-X        
+28.	tBodyGyroJerk-mean()-Y              
+29.	tBodyGyroJerk-mean()-Z      
+30.	tBodyGyroJerk-std()-X              
+31.	tBodyGyroJerk-std()-Y        
+32.	tBodyGyroJerk-std()-Z               
+33.	tBodyAccMag-mean()             
+34.	tBodyAccMag-std()                   
+35.	tGravityAccMag-mean()        
+36.	tGravityAccMag-std()                
+37.	tBodyAccJerkMag-mean()      
+38.	tBodyAccJerkMag-std()               
+39.	tBodyGyroMag-mean()             
+40.	tBodyGyroMag-std()     
+41.	tBodyGyroJerkMag-mean()        
+42.	tBodyGyroJerkMag-std()              
+43.	fBodyAcc-mean()-X         
+44.	fBodyAcc-mean()-Y                   
+45.	fBodyAcc-mean()-Z            
+46.	fBodyAcc-std()-X                    
+47.	fBodyAcc-std()-Y                 
+48.	fBodyAcc-std()-Z                    
+49.	fBodyAcc-meanFreq()-X      
+50.	 fBodyAcc-meanFreq()-Y               
+51.	fBodyAcc-meanFreq()-Z         
+52.	fBodyAccJerk-mean()-X               
+53.	fBodyAccJerk-mean()-Y         
+54.	fBodyAccJerk-mean()-Z               
+55.	fBodyAccJerk-std()-X          
+56.	fBodyAccJerk-std()-Y                
+57.	fBodyAccJerk-std()-Z           
+58.	fBodyAccJerk-meanFreq()-X           
+59.	fBodyAccJerk-meanFreq()-Y  
+60.	fBodyAccJerk-meanFreq()-Z           
+61.	fBodyGyro-mean()-X           
+62.	fBodyGyro-mean()-Y                  
+63.	fBodyGyro-mean()-Z          
+64.	fBodyGyro-std()-X                   
+65.	fBodyGyro-std()-Y              
+66.	fBodyGyro-std()-Z                   
+67.	fBodyGyro-meanFreq()-X       
+68.	fBodyGyro-meanFreq()-Y              
+69.	fBodyGyro-meanFreq()-Z           
+70.	fBodyAccMag-mean()                  
+71.	fBodyAccMag-std()                  
+72.	fBodyAccMag-meanFreq()              
+73.	fBodyBodyAccJerkMag-mean()     
+74.	fBodyBodyAccJerkMag-std()           
+75.	fBodyBodyAccJerkMag-meanFreq()    
+76.	fBodyBodyGyroMag-mean()             
+77.	fBodyBodyGyroMag-std()     
+78.	fBodyBodyGyroMag-meanFreq()         
+79.	fBodyBodyGyroJerkMag-mean()     
+80.	fBodyBodyGyroJerkMag-std()          
+81.	fBodyBodyGyroJerkMag-meanFreq()     
+82.	angle(tBodyAccMean,gravity)        
+83.	angle(tBodyAccJerkMean),gravityMean)
+84.	angle(tBodyGyroMean,gravityMean)    
+85.	angle(tBodyGyroJerkMean,gravityMean)
+86.	angle(X,gravityMean)            
+87.	angle(Y,gravityMean)  
+88.	 angle(Z,gravityMean) 
+
+
+ 
+Appendix
+
+Feature Selection 
+=================
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation 
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values. 
+iqr(): Interquartile range 
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+The complete list of variables of each feature vector is available in 'features.txt'

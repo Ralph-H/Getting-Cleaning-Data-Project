@@ -1,0 +1,9 @@
+---
+title: "Project Readme"
+author: "Ralph H"
+date: "October 25, 2015"
+output: word_document
+---
+
+The project program consists of a single R script, called "run_analysis.R".  The program sets the working directory locally, reads in all necessary files, and performs the appropriate analysis, and writes the output to a file called "tidy_averages.txt" in the same directory.
+
