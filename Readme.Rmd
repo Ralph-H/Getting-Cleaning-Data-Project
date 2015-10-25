@@ -5,5 +5,9 @@ date: "October 25, 2015"
 output: word_document
 ---
 
-The project program consists of a single R script, called "run_analysis.R".  The program sets the working directory locally, reads in all necessary files, and performs the appropriate analysis, and writes the output to a file called "tidy_averages.txt" in the same directory.
+The project program consists of a single R script, called "run_analysis.R".  The program sets the working directory locally to the (slightly renamed) UCIHARDataset folder, which contains the original data folder and files. The path to the files in the 'test' and 'train' folders are set in the individual 'read.table() commands.
+
+The program then tidies and merges the data, downselects to the appropriate variables containing meand and standard deviation measurements, and performs the analysis as described in detail in the codebook.
+
+The output is then written to a file called "tidy_averages.txt" in the 'UCIHARDataset' directory.  The file can then be read into R using read.table("tidy_averages.txt", header = TRUE).
 
